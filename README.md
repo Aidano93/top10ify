@@ -15,3 +15,5 @@ Tracks:
 - All-time
 - 6 months
 - last month
+
+Vue(cli) and Bootstrap are used on the front-end.
