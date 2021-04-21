@@ -1,24 +1,15 @@
-# vue-crash2
+# Top10ify
 
-## Project setup
-```
-npm install
-```
+Aidan O'Reilly
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+An exercise in API authorization, Top10ify prompts you to log into your Spotify account, then accesses information related to your account via the Spotify API. A top 10 list of the following can be displayed:
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Artists:
+- All-time
+- 6 months
+- last month
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Tracks:
+- All-time
+- 6 months
+- last month
