@@ -18,17 +18,10 @@
         </div>
       </div>
       <div class="col-sm align-self-center">
-         <List :topList="topList" class="list"/>
+         <List :topList="topList" :topTitle="topTitle" class="list"/>
       </div> 
       <div class="col-sm align-self-center">
-        <div class="container">
-          <figure>
-            <img class="img-fluid" :src="topImg" :alt="topImgInfo">
-            <figcaption>{{topImgInfo}}</figcaption>
-          </figure>
-        </div>
-        
-        
+        <Figure :topImg="topImg" :topImgInfo="topImgInfo"/>
       </div>
     </div>
     <div class="go-container">
@@ -41,13 +34,15 @@
 import Button from '../components/Button'
 import List from '../components/List'
 import UserInfo from '../components/UserInfo'
+import Figure from '../components/Figure'
 
 export default {
   name: 'Callback',
   components: {
     Button,
     List,
-    UserInfo
+    UserInfo,
+    Figure
   },
   data() {
     return {
@@ -68,6 +63,7 @@ export default {
       userName: '',
       topImg: '',
       topImgInfo: '',
+      topTitle: ''
     }
   },
   mounted() {
@@ -120,7 +116,19 @@ export default {
         return res.json();
       })
       .then((data) => {
+
+        let topTime = '';
+        if (time == 'long') {
+          topTime = 'of All-Time'
+        } else if(time == 'medium') {
+          topTime = 'of the Past 6 Months'
+        } else {
+          topTime = 'of Last Month'
+        };
+
         if (type == 'artists') {
+          this.topTitle = `Top Artists ${topTime}:`
+          console.log(this.topTitle)
           this.topList.one = data.items[0].name
           this.topList.two = data.items[1].name
           this.topList.three = data.items[2].name
@@ -131,23 +139,24 @@ export default {
           this.topList.eight = data.items[7].name
           this.topList.nine = data.items[8].name
           this.topList.ten = data.items[9].name
-          console.log(data.items[0])
           this.topImg = data.items[0].images[1].url
           this.topImgInfo = data.items[0].name
         } else {
-          this.topList.one = `${data.items[0].name} - ${data.items[0].artists[0].name}`
-          this.topList.two = `${data.items[1].name} - ${data.items[1].artists[0].name}`
-          this.topList.three = `${data.items[2].name} - ${data.items[2].artists[0].name}`
-          this.topList.four = `${data.items[3].name} - ${data.items[3].artists[0].name}`
-          this.topList.five = `${data.items[4].name} - ${data.items[4].artists[0].name}`
-          this.topList.six = `${data.items[5].name} - ${data.items[5].artists[0].name}`
-          this.topList.seven = `${data.items[6].name} - ${data.items[6].artists[0].name}`
-          this.topList.eight = `${data.items[7].name} - ${data.items[7].artists[0].name}`
-          this.topList.nine = `${data.items[8].name} - ${data.items[8].artists[0].name}`
-          this.topList.ten = `${data.items[9].name} - ${data.items[9].artists[0].name}`
-          console.log(data.items[0])
+          this.topTitle = `Top Tracks ${topTime}:`
+          console.log(this.topTitle)
+          this.topList.one = `${data.items[0].name} (${data.items[0].artists[0].name})`
+          this.topList.two = `${data.items[1].name} (${data.items[1].artists[0].name})`
+          this.topList.three = `${data.items[2].name} (${data.items[2].artists[0].name})`
+          this.topList.four = `${data.items[3].name} (${data.items[3].artists[0].name})`
+          this.topList.five = `${data.items[4].name} (${data.items[4].artists[0].name})`
+          this.topList.six = `${data.items[5].name} (${data.items[5].artists[0].name})`
+          this.topList.seven = `${data.items[6].name} (${data.items[6].artists[0].name})`
+          this.topList.eight = `${data.items[7].name} (${data.items[7].artists[0].name})`
+          this.topList.nine = `${data.items[8].name} (${data.items[8].artists[0].name})`
+          this.topList.ten = `${data.items[9].name} (${data.items[9].artists[0].name})`
           this.topImg = data.items[0].album.images[1].url
           this.topImgInfo = data.items[0].album.name
+          
         }
         
       })
@@ -155,7 +164,7 @@ export default {
         console.log(error);
       });
 
-    }
+    },
   }
 }
 </script>
@@ -181,9 +190,7 @@ h3 {
   justify-content: center;
   align-content: center;
 }
-figure {
-  max-width: clamp(180px, 45vw, 360px);
-}
+
 
 .go-container {
   text-align: center;

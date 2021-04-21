@@ -32,7 +32,7 @@ export default {
 }
       const stateKey = 'spotify_auth_state';
       const client_id = '3c52d1949a0e437daa93d109cb16d2e0';
-      const redirect_uri = 'https://top10ify.herokuapp.com/callback';
+      const redirect_uri = 'http://localhost:8080/callback';
       const state = getRandomString(16);
       localStorage.setItem(stateKey, state);
       const scope = 'user-top-read user-read-email user-read-private'

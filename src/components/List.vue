@@ -1,16 +1,17 @@
 <template >
   <div class="list-container">
     <ol class="">
-      <li class="">{{topList.one}}</li>
-      <li class="">{{topList.two}}</li>
-      <li class="">{{topList.three}}</li>
-      <li class="">{{topList.four}}</li>
-      <li class="">{{topList.five}}</li>
-      <li class="">{{topList.six}}</li>
-      <li class="">{{topList.seven}}</li>
-      <li class="">{{topList.eight}}</li>
-      <li class="">{{topList.nine}}</li>
-      <li class="">{{topList.ten}}</li>
+      <li id="title">{{topTitle}}</li>
+      <li>{{topList.one}}</li>
+      <li>{{topList.two}}</li>
+      <li>{{topList.three}}</li>
+      <li>{{topList.four}}</li>
+      <li>{{topList.five}}</li>
+      <li>{{topList.six}}</li>
+      <li>{{topList.seven}}</li>
+      <li>{{topList.eight}}</li>
+      <li>{{topList.nine}}</li>
+      <li>{{topList.ten}}</li>
     </ol>
   </div>
 </template>
@@ -19,7 +20,8 @@
 export default {
   name: 'List',
   props: {
-    topList: Object
+    topList: Object,
+    topTitle: String,
   },
   data() {
     return {
@@ -37,6 +39,9 @@ text-align: left;
 li {
 display: block;
 font-size: clamp(12px, 3vw, 24px);
-min-width: 19ch;
+min-width: 30ch;
+}
+#title {
+  font-weight: bold;
 }
 </style>
