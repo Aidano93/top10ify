@@ -36,6 +36,7 @@ text-align: left;
 
 li {
 display: block;
-font-size: 1.8rem;
+font-size: clamp(12px, 3vw, 24px);
+min-width: 19ch;
 }
 </style>

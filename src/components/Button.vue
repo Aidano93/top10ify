@@ -20,8 +20,9 @@ export default {
     border-radius: 2rem;
     padding: .7rem 1.2rem;
     text-transform: uppercase;
+    font-size: clamp(8px, 2vw, 16px);
     margin: 0.4rem;
-    width: 12rem;
+    width: clamp(110px, 25vw, 210px);
   }
   i {
     color: #1DB954;

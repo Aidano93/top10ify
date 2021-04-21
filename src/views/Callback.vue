@@ -1,9 +1,9 @@
 <template>
   <div class="container-fluid">
     <UserInfo :userImg="userImg" :userName="userName"/>
-    <div class="row">
-      <div class="col-4">
-        <h2>Check your <strong>Top 10</strong></h2>
+    <div class="row justify-content-center">
+      <div class="col-sm align-self-center">
+        <h1>Check your <strong>Top 10</strong></h1>
         <h3>Artists</h3>
         <div class="btn-container">
           <Button :text="'All time'" @click="getTopData('artists', 'long')"></Button>
@@ -17,14 +17,17 @@
           <Button :text="'Past Month'" @click="getTopData('tracks', 'short')"></Button>
         </div>
       </div>
-      <div class="col-5">
+      <div class="col-sm align-self-center">
          <List :topList="topList" class="list"/>
       </div> 
-      <div class="col-3">
-        <figure>
-          <img :src="topImg" :alt="topImgInfo">
-          <figcaption>{{topImgInfo}}</figcaption>
-        </figure>
+      <div class="col-sm align-self-center">
+        <div class="container">
+          <figure>
+            <img class="img-fluid" :src="topImg" :alt="topImgInfo">
+            <figcaption>{{topImgInfo}}</figcaption>
+          </figure>
+        </div>
+        
         
       </div>
     </div>
@@ -158,25 +161,28 @@ export default {
 </script>
 
 <style scoped>
-h2, h3 {
+h1, h3 {
   text-align: center;
 }
-h2 {
-  font-size: 2.5rem;
+h1 {
+  font-size: clamp(16px, 4vw, 32px);
 }
 h3 {
-  font-size: 1.8rem;
+  font-size: clamp(12px, 3vw, 24px);
 }
 .row {
-  margin-top: 1rem;
-  min-height: 65vh
+  min-height: 63vh;
+  margin-top: 0.1rem;
 }
 .btn-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+}
+figure {
+  max-width: clamp(180px, 45vw, 360px);
 }
 
 .go-container {

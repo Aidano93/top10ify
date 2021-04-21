@@ -1,6 +1,6 @@
 <template>
   <header>
-    <h1><router-link to="/" class="header">Top10ify</router-link></h1>
+    <h2><router-link to="/" class="header">Top10ify</router-link></h2>
   </header>
 </template>
 
@@ -11,10 +11,10 @@ export default {
 </script>
 
 <style scoped>
-  h1 {
+  h2 {
     color: white;
     text-align: left;
-    font-size: 9vmin;
+    font-size: 5vw;
     text-shadow: 2px 2px black;
   }
   .header {

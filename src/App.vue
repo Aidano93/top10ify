@@ -32,7 +32,6 @@ export default {
 * {
   font-family: 'Lato', sans-serif;
   color: #272727;
-  
 }
 body {
   background-color: #FFA69E;
