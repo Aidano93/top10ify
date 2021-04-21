@@ -55,7 +55,7 @@ export default {
     font-size: 5rem;
   }
   .home {
-    min-height: 75vh;
+    min-height: 65vh;
   }
   .main-btn {
     font-size: 1.2rem;

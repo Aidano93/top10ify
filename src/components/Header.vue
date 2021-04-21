@@ -17,8 +17,12 @@ export default {
     font-size: 5vw;
     text-shadow: 2px 2px black;
   }
+  
   .header {
     text-decoration: none;
     color: white;
+  }
+  .header:hover{
+    color: #ABDAE1;
   }
 </style>

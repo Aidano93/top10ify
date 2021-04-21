@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="go-container">
-      <router-link to="/">Go Back</router-link>
+      <router-link class="r-link" to="/">Go Back</router-link>
     </div>
   </div>
 </template>
@@ -180,7 +180,7 @@ h3 {
   font-size: clamp(12px, 3vw, 24px);
 }
 .row {
-  min-height: 63vh;
+  min-height: 60vh;
   margin-top: 0.1rem;
 }
 .btn-container {
@@ -194,5 +194,11 @@ h3 {
 
 .go-container {
   text-align: center;
+}
+.r-link {
+  color: black;
+}
+.r-link:hover {
+  color: #3B8EA5;
 }
 </style>
