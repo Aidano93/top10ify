@@ -28,7 +28,6 @@ export default {
     border-radius: 50%;
     /* border: 3px white solid; */
     max-width: clamp(60px, 15vw, 120px);
-    height: auto;
     
   }
 </style>

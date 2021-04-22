@@ -52,7 +52,7 @@ export default {
   h2 {
     text-align: center;
     margin: 5rem;
-    font-size: 5rem;
+    font-size: clamp(40px, 5vw, 80px);
   }
   .home {
     min-height: 65vh;

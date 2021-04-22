@@ -24,7 +24,7 @@ export default {
     gap: 1rem;
   }
   i {
-    font-size: clamp(24px, 3vw, 36px);
+    font-size: clamp(30px, 3vw, 40px);
     margin: 0.2rem;
   }
   i:hover {
