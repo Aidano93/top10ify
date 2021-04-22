@@ -21,13 +21,13 @@ export default {
   h2 {
     align-self: center;
     margin-left: 1rem;
-    font-size: clamp(12px, 3vw, 24px);
+    font-size: clamp(20px, 3vw, 30px);
   }
   img {
     margin-top: 1rem;
     border-radius: 50%;
-    /* border: 3px white solid; */
     max-width: clamp(60px, 15vw, 120px);
+    max-height: clamp(60px, 15vw, 120px);
     
   }
 </style>
