@@ -16,4 +16,11 @@ Tracks:
 - 6 months
 - last month
 
-Vue(cli) and Bootstrap are used on the front-end.
+## Example:
+
+![Screen Shot 2021-04-23 at 8 41 56 AM](https://user-images.githubusercontent.com/77300405/115888833-9b7ca000-a410-11eb-86ec-cd59ba03e65d.png)
+
+
+## Attributions:
+
+Spotify icon from [Font Awesome](https://fontawesome.com/license/free)
