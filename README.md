@@ -20,6 +20,11 @@ Tracks:
 
 ![Screen Shot 2021-04-23 at 8 41 56 AM](https://user-images.githubusercontent.com/77300405/115888833-9b7ca000-a410-11eb-86ec-cd59ba03e65d.png)
 
+## App Structure:
+
+![Final Presentation (1)](https://user-images.githubusercontent.com/77300405/116904545-1147ef00-abfb-11eb-85dd-beeea76476b3.png)
+
+
 
 ## Attributions:
 
