@@ -26,6 +26,7 @@
     </div>
     <div class="dlist-container">
       <Button class="dlist-btn" :text="'Download List'" @click="downloadList()"/>
+      <Button :text="'Play Top'" @click.preventDefault="spotifyUrl()" />
     </div>
     <div class="go-container">
       <router-link class="r-link" to="/">Go Back</router-link>
@@ -67,7 +68,8 @@ export default {
       userName: '',
       topImg: '',
       topImgInfo: '',
-      topTitle: ''
+      topTitle: '',
+      topLink: ''
     }
   },
   mounted() {
@@ -130,7 +132,9 @@ export default {
         };
 
         if (type == 'artists') {
+          console.log(data)
           this.topTitle = `Top Artists ${topTime}:`
+          this.topLink = data.items[0].external_urls.spotify
           this.listItems[0].name = data.items[0].name
           this.listItems[1].name = data.items[1].name
           this.listItems[2].name = data.items[2].name
@@ -145,6 +149,8 @@ export default {
           this.topImgInfo = data.items[0].name
         } else {
           this.topTitle = `Top Tracks ${topTime}:`
+          this.topLink = data.items[0].external_urls.spotify
+          console.log(data)
           this.listItems[0].name = `${data.items[0].name} (${data.items[0].artists[0].name})`
           this.listItems[1].name = `${data.items[1].name} (${data.items[1].artists[0].name})`
           this.listItems[2].name = `${data.items[2].name} (${data.items[2].artists[0].name})`
@@ -176,6 +182,14 @@ export default {
           .replace("image/png", "image/octet-stream")
       );
       link.click();
+    },
+    spotifyUrl() {
+      if (this.topLink === '') {
+        preventDefault()
+      } else {
+        window.location = this.topLink
+      }
+      
     }
   }
 }
