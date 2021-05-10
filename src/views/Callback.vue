@@ -17,12 +17,15 @@
           <Button :text="'Past Month'" @click="getTopData('tracks', 'short')"></Button>
         </div>
       </div>
-      <div class="col-sm align-self-center">
-         <List :topList="topList" :topTitle="topTitle" class="list"/>
+      <div class="col-sm align-self-center" id="list-container" style="background-color:#FFA69E;">
+         <List :listItems="listItems" :topTitle="topTitle" class="list"/>
       </div> 
       <div class="col-sm align-self-center">
         <Figure :topImg="topImg" :topImgInfo="topImgInfo"/>
       </div>
+    </div>
+    <div class="dlist-container">
+      <Button class="dlist-btn" :text="'Download List'" @click="downloadList()"/>
     </div>
     <div class="go-container">
       <router-link class="r-link" to="/">Go Back</router-link>
@@ -35,6 +38,7 @@ import Button from '../components/Button'
 import List from '../components/List'
 import UserInfo from '../components/UserInfo'
 import Figure from '../components/Figure'
+import html2canvas from 'html2canvas'
 
 export default {
   name: 'Callback',
@@ -46,18 +50,18 @@ export default {
   },
   data() {
     return {
-      topList: {
-        one: '',
-        two: '',
-        three: '',
-        four: '',
-        five: '',
-        six: '',
-        seven: '',
-        eight: '',
-        nine: '',
-        ten: '',
-      },
+      listItems: [
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+        {name: ''},
+      ],
       access_token: '',
       userImg: '',
       userName: '',
@@ -98,7 +102,6 @@ export default {
       .catch(function(error){
         console.log(error);
       });
-
   }, 
   methods: {
     getTopData(type, time) {
@@ -128,43 +131,52 @@ export default {
 
         if (type == 'artists') {
           this.topTitle = `Top Artists ${topTime}:`
-          console.log(this.topTitle)
-          this.topList.one = data.items[0].name
-          this.topList.two = data.items[1].name
-          this.topList.three = data.items[2].name
-          this.topList.four = data.items[3].name
-          this.topList.five = data.items[4].name
-          this.topList.six = data.items[5].name
-          this.topList.seven = data.items[6].name
-          this.topList.eight = data.items[7].name
-          this.topList.nine = data.items[8].name
-          this.topList.ten = data.items[9].name
+          this.listItems[0].name = data.items[0].name
+          this.listItems[1].name = data.items[1].name
+          this.listItems[2].name = data.items[2].name
+          this.listItems[3].name = data.items[3].name
+          this.listItems[4].name = data.items[4].name
+          this.listItems[5].name = data.items[5].name
+          this.listItems[6].name = data.items[6].name
+          this.listItems[7].name = data.items[7].name
+          this.listItems[8].name = data.items[8].name
+          this.listItems[9].name = data.items[9].name
           this.topImg = data.items[0].images[1].url
           this.topImgInfo = data.items[0].name
         } else {
           this.topTitle = `Top Tracks ${topTime}:`
-          console.log(this.topTitle)
-          this.topList.one = `${data.items[0].name} (${data.items[0].artists[0].name})`
-          this.topList.two = `${data.items[1].name} (${data.items[1].artists[0].name})`
-          this.topList.three = `${data.items[2].name} (${data.items[2].artists[0].name})`
-          this.topList.four = `${data.items[3].name} (${data.items[3].artists[0].name})`
-          this.topList.five = `${data.items[4].name} (${data.items[4].artists[0].name})`
-          this.topList.six = `${data.items[5].name} (${data.items[5].artists[0].name})`
-          this.topList.seven = `${data.items[6].name} (${data.items[6].artists[0].name})`
-          this.topList.eight = `${data.items[7].name} (${data.items[7].artists[0].name})`
-          this.topList.nine = `${data.items[8].name} (${data.items[8].artists[0].name})`
-          this.topList.ten = `${data.items[9].name} (${data.items[9].artists[0].name})`
+          this.listItems[0].name = `${data.items[0].name} (${data.items[0].artists[0].name})`
+          this.listItems[1].name = `${data.items[1].name} (${data.items[1].artists[0].name})`
+          this.listItems[2].name = `${data.items[2].name} (${data.items[2].artists[0].name})`
+          this.listItems[3].name = `${data.items[3].name} (${data.items[3].artists[0].name})`
+          this.listItems[4].name = `${data.items[4].name} (${data.items[4].artists[0].name})`
+          this.listItems[5].name = `${data.items[5].name} (${data.items[5].artists[0].name})`
+          this.listItems[6].name = `${data.items[6].name} (${data.items[6].artists[0].name})`
+          this.listItems[7].name = `${data.items[7].name} (${data.items[7].artists[0].name})`
+          this.listItems[8].name = `${data.items[8].name} (${data.items[8].artists[0].name})`
+          this.listItems[9].name = `${data.items[9].name} (${data.items[9].artists[0].name})`
           this.topImg = data.items[0].album.images[1].url
-          this.topImgInfo = data.items[0].album.name
-          
+          this.topImgInfo = data.items[0].album.name 
         }
-        
       })
       .catch(function(error){
         console.log(error);
       });
 
     },
+    async downloadList() {
+      const printCanvas = await html2canvas(document.querySelector("#list-container"), {scrollY: -window.scrollY});
+
+      const link = document.createElement("a");
+      link.setAttribute("download", "top10ify-top.png");
+      link.setAttribute(
+        "href",
+        printCanvas
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream")
+      );
+      link.click();
+    }
   }
 }
 </script>
@@ -190,8 +202,10 @@ h3 {
   justify-content: center;
   align-content: center;
 }
+.dlist-container {
+  text-align: center;
 
-
+}
 .go-container {
   text-align: center;
 }

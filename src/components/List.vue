@@ -2,16 +2,9 @@
   <div class="list-container">
     <ol class="">
       <li id="title">{{topTitle}}</li>
-      <li>{{topList.one}}</li>
-      <li>{{topList.two}}</li>
-      <li>{{topList.three}}</li>
-      <li>{{topList.four}}</li>
-      <li>{{topList.five}}</li>
-      <li>{{topList.six}}</li>
-      <li>{{topList.seven}}</li>
-      <li>{{topList.eight}}</li>
-      <li>{{topList.nine}}</li>
-      <li>{{topList.ten}}</li>
+      <li v-for="listItem in listItems" :key='listItem.name'>
+        {{listItem.name}}
+      </li>
     </ol>
   </div>
 </template>
@@ -20,7 +13,7 @@
 export default {
   name: 'List',
   props: {
-    topList: Object,
+    listItems: Array,
     topTitle: String,
   },
   data() {
