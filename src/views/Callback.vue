@@ -17,7 +17,7 @@
           <Button :text="'Past Month'" @click="getTopData('tracks', 'short')"></Button>
         </div>
       </div>
-      <div class="col-sm align-self-center" id="list-container" style="background-color:#FFA69E;">
+      <div class="col-sm align-self-center list-container" style="background-color:#FFA69E;">
          <List :listItems="listItems" :topTitle="topTitle" class="list"/>
       </div> 
       <div class="col-sm align-self-center">
@@ -25,8 +25,8 @@
       </div>
     </div>
     <div class="dlist-container">
-      <Button class="dlist-btn" :text="'Download List'" @click="downloadList()"/>
-      <Button :text="'Play Top'" @click.preventDefault="spotifyUrl()" />
+      <Button class="dlist-btn" :text="'Download'" @click="downloadList()"/>
+      <Button :text="'Play Top'" @click="spotifyUrl()" />
     </div>
     <div class="go-container">
       <router-link class="r-link" to="/">Go Back</router-link>
@@ -216,12 +216,17 @@ h3 {
   justify-content: center;
   align-content: center;
 }
+.list-container {
+  margin-top: 0.5rem;
+  margin-bottom: 0.3rem;
+}
 .dlist-container {
   text-align: center;
 
 }
 .go-container {
   text-align: center;
+  margin-top: 1rem;
 }
 .r-link {
   color: black;

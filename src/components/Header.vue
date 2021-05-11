@@ -14,7 +14,7 @@ export default {
   h2 {
     color: white;
     text-align: left;
-    font-size: 5vw;
+    font-size: clamp(40px, 5vw, 250px);
     text-shadow: 2px 2px black;
   }
   
