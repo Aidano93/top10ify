@@ -1,6 +1,5 @@
 <template>
-  <button class="btn btn-dark"><i class="fab fa-spotify"></i> {{text}}</button>
-  
+  <button tabindex="0"  class="btn btn-dark"><i tabindex="0" class="fab fa-spotify"></i> {{text}}</button>
 </template>
 
 <script>
