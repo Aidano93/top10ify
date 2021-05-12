@@ -16,7 +16,6 @@
           <Button :text="'Past 6 months'" @click="getTopData('tracks', 'medium'), showDownLoadBtn()"></Button>
           <Button :text="'Past Month'" @click="getTopData('tracks', 'short'), showDownLoadBtn()"></Button>
         </div>
-        
       </div>
       <div class="col-sm align-self-center list-container" style="background-color:#FFA69E;">
          <List :listItems="listItems" :topTitle="topTitle" class="list"/>
@@ -134,7 +133,6 @@ export default {
         };
 
         if (type == 'artists') {
-          console.log(data)
           this.topTitle = `Top Artists ${topTime}:`
           this.topLink = data.items[0].external_urls.spotify
           this.frameSrc = `https://open.spotify.com/embed/artist/${data.items[0].uri.slice(15)}`
@@ -154,7 +152,6 @@ export default {
           this.topTitle = `Top Tracks ${topTime}:`
           this.topLink = data.items[0].external_urls.spotify
           this.frameSrc = `https://open.spotify.com/embed/track/${data.items[0].uri.slice(14)}`
-          console.log(data)
           this.listItems[0].name = `${data.items[0].name} (${data.items[0].artists[0].name})`
           this.listItems[1].name = `${data.items[1].name} (${data.items[1].artists[0].name})`
           this.listItems[2].name = `${data.items[2].name} (${data.items[2].artists[0].name})`
@@ -187,17 +184,9 @@ export default {
       );
       link.click();
     },
-    spotifyUrl() {
-      if (this.topLink === '') {
-        preventDefault()
-      } else {
-        window.location = this.topLink
-      }
-      
-    },
     showDownLoadBtn() {
       document.getElementById("dlist-btn").classList.add("dlist-btn-show")
-    }
+    },
   }
 }
 </script>
@@ -237,7 +226,6 @@ h3 {
   width: 21.5rem;
   height: 5rem;
   display: block;
-  /* margin: auto; */
 }
 .dlist-container {
   text-align: center;

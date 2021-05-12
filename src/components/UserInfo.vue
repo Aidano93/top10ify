@@ -27,7 +27,6 @@ export default {
     margin-top: 1rem;
     border-radius: 50%;
     max-width: clamp(60px, 15vw, 120px);
-    max-height: clamp(60px, 15vw, 120px);
-    
+    max-height: clamp(60px, 15vw, 120px); 
   }
 </style>

@@ -16,11 +16,6 @@ export default {
     listItems: Array,
     topTitle: String,
   },
-  data() {
-    return {
-
-    }
-  }
 }
 </script>
 
