@@ -6,27 +6,28 @@
         <h1>Check your <strong>Top 10</strong></h1>
         <h3>Artists</h3>
         <div class="btn-container">
-          <Button :text="'All time'" @click="getTopData('artists', 'long')"></Button>
-          <Button :text="'Past 6 months'" @click="getTopData('artists', 'medium')"></Button>
-          <Button :text="'Past month'" @click="getTopData('artists', 'short')"></Button>
+          <Button :text="'All time'" @click="getTopData('artists', 'long'), showDownLoadBtn()" ></Button>
+          <Button :text="'Past 6 months'" @click="getTopData('artists', 'medium'), showDownLoadBtn()"></Button>
+          <Button :text="'Past month'" @click="getTopData('artists', 'short'), showDownLoadBtn()"></Button>
         </div>
         <h3>Tracks</h3>
         <div class="btn-container">  
-          <Button :text="'All time'" @click="getTopData('tracks', 'long')"></Button>
-          <Button :text="'Past 6 months'" @click="getTopData('tracks', 'medium')"></Button>
-          <Button :text="'Past Month'" @click="getTopData('tracks', 'short')"></Button>
+          <Button :text="'All time'" @click="getTopData('tracks', 'long'), showDownLoadBtn()"></Button>
+          <Button :text="'Past 6 months'" @click="getTopData('tracks', 'medium'), showDownLoadBtn()"></Button>
+          <Button :text="'Past Month'" @click="getTopData('tracks', 'short'), showDownLoadBtn()"></Button>
         </div>
+        
       </div>
       <div class="col-sm align-self-center list-container" style="background-color:#FFA69E;">
          <List :listItems="listItems" :topTitle="topTitle" class="list"/>
       </div> 
-      <div class="col-sm align-self-center">
-        <Figure :topImg="topImg" :topImgInfo="topImgInfo"/>
+      <div class="col-sm align-self-center media-col">
+        <a class="figure-link" :href="topLink" target="_blank"><Figure :topImg="topImg" :topImgInfo="topImgInfo"/></a>
+        <iframe class="iframe" :src="frameSrc" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
       </div>
     </div>
-    <div class="dlist-container">
-      <Button class="dlist-btn" :text="'Download'" @click="downloadList()"/>
-      <Button :text="'Play Top'" @click="spotifyUrl()" />
+    <div class="btn-container">
+      <Button id="dlist-btn" class="dlist-btn" :text="'Download'" @click="downloadList()"/>
     </div>
     <div class="go-container">
       <router-link class="r-link" to="/">Go Back</router-link>
@@ -69,7 +70,8 @@ export default {
       topImg: '',
       topImgInfo: '',
       topTitle: '',
-      topLink: ''
+      topLink: '',
+      frameSrc: '',
     }
   },
   mounted() {
@@ -135,6 +137,7 @@ export default {
           console.log(data)
           this.topTitle = `Top Artists ${topTime}:`
           this.topLink = data.items[0].external_urls.spotify
+          this.frameSrc = `https://open.spotify.com/embed/artist/${data.items[0].uri.slice(15)}`
           this.listItems[0].name = data.items[0].name
           this.listItems[1].name = data.items[1].name
           this.listItems[2].name = data.items[2].name
@@ -150,6 +153,7 @@ export default {
         } else {
           this.topTitle = `Top Tracks ${topTime}:`
           this.topLink = data.items[0].external_urls.spotify
+          this.frameSrc = `https://open.spotify.com/embed/track/${data.items[0].uri.slice(14)}`
           console.log(data)
           this.listItems[0].name = `${data.items[0].name} (${data.items[0].artists[0].name})`
           this.listItems[1].name = `${data.items[1].name} (${data.items[1].artists[0].name})`
@@ -171,7 +175,7 @@ export default {
 
     },
     async downloadList() {
-      const printCanvas = await html2canvas(document.querySelector("#list-container"), {scrollY: -window.scrollY});
+      const printCanvas = await html2canvas(document.querySelector(".list-container"), {scrollY: -window.scrollY});
 
       const link = document.createElement("a");
       link.setAttribute("download", "top10ify-top.png");
@@ -190,6 +194,9 @@ export default {
         window.location = this.topLink
       }
       
+    },
+    showDownLoadBtn() {
+      document.getElementById("dlist-btn").classList.add("dlist-btn-show")
     }
   }
 }
@@ -220,9 +227,27 @@ h3 {
   margin-top: 0.5rem;
   margin-bottom: 0.3rem;
 }
+.media-col {
+  margin-top: 1rem;
+}
+.figure-link {
+  text-decoration: none;
+}
+.iframe {
+  width: 21.5rem;
+  height: 5rem;
+  display: block;
+  /* margin: auto; */
+}
 .dlist-container {
   text-align: center;
 
+}
+.dlist-btn {
+  visibility: hidden;
+}
+.dlist-btn-show {
+  visibility: visible;
 }
 .go-container {
   text-align: center;

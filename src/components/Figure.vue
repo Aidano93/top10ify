@@ -20,6 +20,10 @@ export default {
   figure {
     max-width: clamp(180px, 45vw, 360px);
   }
+  img {
+    max-width: 300px;
+    max-height: 300px;
+  }
   figcaption {
     font-size: clamp(12px, 2vw, 16px);
   }
