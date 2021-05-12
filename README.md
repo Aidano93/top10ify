@@ -16,13 +16,17 @@ Tracks:
 - 6 months
 - last month
 
+03/12: embedded player has been added connected to top instance of each list
+
 ## Example:
 
-![Screen Shot 2021-04-23 at 8 41 56 AM](https://user-images.githubusercontent.com/77300405/115888833-9b7ca000-a410-11eb-86ec-cd59ba03e65d.png)
+![Screen Shot 2021-05-12 at 12 27 44 PM](https://user-images.githubusercontent.com/77300405/118026177-c413fd80-b31d-11eb-98bf-bfa41f216a80.png)
+
 
 ## App Structure:
 
-![Final Presentation (1)](https://user-images.githubusercontent.com/77300405/116904545-1147ef00-abfb-11eb-85dd-beeea76476b3.png)
+![Final Presentation](https://user-images.githubusercontent.com/77300405/118026247-d130ec80-b31d-11eb-9120-f24fcf73a2cd.png)
+
 
 ## Dependencies:
 
