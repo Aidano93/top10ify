@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Callback from '../views/Callback'
 import Home from '../views/Home'
+import Notfound from '../views/Notfound'
 
 const routes = [
   {
@@ -12,6 +13,11 @@ const routes = [
     path: '/callback',
     name: 'Callback',
     component: Callback,
+  },
+  {
+    path: "/:catchAll(.*)",
+    name: 'Notfound',
+    component: Notfound,
   }
 ]
 
